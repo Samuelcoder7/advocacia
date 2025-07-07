@@ -1,0 +1,259 @@
+/* Paleta de cores da página principal */
+:root {
+  --cor-primaria: #8b4513;    /* Marrom suave */
+  --cor-secundaria: #f5f5dc;  /* Bege claro */
+  --cor-destaque: #d2b48c;    /* Bege médio */
+  --cor-branco: #fff;
+  --cor-escuro: #333;
+}
+
+/* Estilo geral do corpo */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--cor-secundaria); /* Bege claro */
+    color: var(--cor-primaria); /* Marrom suave */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Garante que o corpo ocupe toda a altura da janela */
+}
+
+/* Estilo para o título principal (h1) */
+h1 {
+  font-size: 48px; /* Define o tamanho da fonte como 48px */
+  margin-bottom: 10px; /* Adiciona um espaçamento inferior de 10px */
+  color: var(--cor-primaria); /* Marrom suave */
+}
+
+/* Estilo para os parágrafos (p) */
+p {
+  font-size: 24px; /* Define o tamanho da fonte como 24px */
+  margin-top: 0; /* Remove o espaçamento superior */
+  margin-bottom: 30px; /* Adiciona um espaçamento inferior de 30px */
+  color: var(--cor-primaria); /* Marrom suave */
+}
+
+/* Estilo para o contêiner da imagem */
+.imagem-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.imagem-container img {
+    width: 20%; /* Define a largura da imagem */
+    height: 20%; /* Define a altura da imagem igual à largura */
+    border-radius: 10%; /* Torna as bordas circulares */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adiciona uma sombra leve */
+    transition: transform 0.3s ease; /* Adiciona uma transição suave */
+}
+
+.imagem-container img:hover {
+    transform: scale(1.1); /* Aumenta levemente a imagem ao passar o mouse */
+}
+
+/* Estilo para o formulário */
+.form-container {
+    margin: auto;
+    padding: 40px 60px; /* Aumente o padding para dar mais espaço interno */
+    max-width: 400px;
+    background-color: var(--cor-branco); /* Branco */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box; /* Garante que padding não ultrapasse o max-width */
+    color: var(--cor-primaria); /* Marrom suave */
+}
+
+.form-container input {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid var(--cor-destaque); /* Bege médio */
+    border-radius: 5px;
+    font-size: 14px;
+    color: var(--cor-primaria);
+    background-color: var(--cor-branco);
+}
+
+.form-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--cor-primaria); /* Marrom suave */
+    color: var(--cor-branco); /* Branco */
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form-container button:hover {
+    background-color: var(--cor-destaque); /* Bege médio */
+    color: var(--cor-escuro);
+}
+
+/* Estilo para o rodapé fixo */
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%; /* Faz com que o rodapé ocupe toda a largura da página */
+    background-color: var(--cor-primaria); /* Marrom suave */
+    color: var(--cor-branco); /* Branco */
+    text-align: center; /* Centraliza o texto */
+    padding: 10px 0; /* Adiciona espaçamento interno */
+    font-size: 14px; /* Define o tamanho da fonte */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2); /* Adiciona uma sombra leve acima do rodapé */
+}
+
+/* Estilo para o botão de alternância */
+#toggle-dark-mode {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  background-color: var(--cor-destaque); /* Bege médio */
+  color: var(--cor-primaria); /* Marrom suave */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#toggle-dark-mode:hover {
+  background-color: var(--cor-primaria); /* Marrom suave */
+  color: var(--cor-branco);
+}
+
+/* Estilo para o modo escuro */
+body.dark-mode {
+  background-color: #121212; /* Fundo escuro */
+  color: #e0e0e0; /* Texto claro */
+}
+
+body.dark-mode a {
+  color: #bb86fc; /* Links em modo escuro */
+}
+
+body.dark-mode .form-container {
+  background-color: #1e1e1e; /* Fundo do formulário em modo escuro */
+  color: #e0e0e0; /* Texto do formulário */
+}
+
+body.dark-mode footer {
+  background-color: #1e1e1e; /* Fundo do rodapé em modo escuro */
+  color: #e0e0e0; /* Texto do rodapé */
+}
+
+body.dark-mode #toggle-dark-mode {
+  background-color: #e0e0e0;
+  color: #121212;
+}
+
+/* Estilo para campos de entrada com ícones */
+.input-icon {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+/* Espaço suficiente para o ícone à esquerda e botão/checkbox à direita */
+.input-icon input {
+    width: 98%;
+    padding-left: 38px; /* Espaço para ícone à esquerda */
+    padding-right: 38px; /* Espaço para botão/checkbox à direita */
+    box-sizing: border-box;
+}
+
+/* Ícones gerais para inputs com ícone à esquerda */
+.input-icon i.fa,
+.icon-usuario,
+.icon-email,
+.icon-senha {
+    position: absolute;
+    left: 12px; /* Distância da borda esquerda */
+    top: 51%; /* Centraliza verticalmente */
+    transform: translateY(-50%);
+    color: #888; /* Cor do ícone */
+    font-size: 18px; /* Tamanho do ícone */
+    pointer-events: none; /* Ícone não interfere no clique */
+}
+
+/* Ajuste individual de altura dos ícones (opcional, se necessário)
+.icon-usuario { top: 50%; }
+.icon-email   { top: 50%; }
+.icon-senha   { top: 50%; }
+*/
+
+/* Ícone do olho para senha (permite clique) */
+.icon-senha {
+    position: absolute;
+    left: 14px; /* Ligeiro ajuste para alinhar melhor */
+    top: 40%;
+    transform: translateY(-50%);
+    color: #888;
+    font-size: 18px;
+    pointer-events: auto; /* Permite clique no olho */
+    z-index: 2;
+}
+
+
+
+/* Garante espaço para o ícone à esquerda do input de senha */
+.input-icon input[type="password"] {
+    padding-left: 50px;
+}
+
+/* Botão do olho (visualizar senha) à direita do input */
+.input-icon button,
+.toggleSenhaBtn {
+    position: absolute;
+    right: 10px; /* Distância da borda direita */
+    top: 50%; /* Centraliza verticalmente */
+    transform: translateY(50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    color: #888;
+    font-size: 18px;
+    z-index: 2;
+}
+
+/* Checkbox de senha (caso use) alinhado à direita do input */
+.checkbox-senha {
+    position: absolute;
+    right: 10px;
+    top: 40%;
+    transform: translateY(-50%);
+    /* Alinhamento e estilo do checkbox */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    height: auto;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+    margin-left: 0;
+    margin-right: 6px;
+    z-index: 2;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 600px) {
+  .form-container {
+    padding: 20px 10px;
+    max-width: 98vw;
+  }
+  .imagem-container img {
+    width: 60vw;
+    height: auto;
+  }
+  h1, h2 {
+    font-size: 1.5rem;
+  }
+  button, input, select {
+    font-size: 1rem;
+  }
+}

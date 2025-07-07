@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Confirmação de CPF</title>
+  <link rel="icon" type="image/png" href="../Fotos/favicon_io (1)/favicon-32x32.png" />
+  <link rel="stylesheet" href="../css/css-confirmacao.css" />
+</head>
+<body>
+
+  <!-- Botão para alternar modo escuro -->
+  <button id="toggle-dark-mode" aria-label="Alternar modo escuro">Modo Escuro</button>
+
+  <div class="container-login">
+    <h1>Confirme seu CPF</h1>
+
+    <div id="error-message" role="alert" style="display:none; color:red;"></div>
+    <div id="success-message" role="alert" style="display:none; color:green;"></div>
+
+    <form id="cpf-form" novalidate>
+      <div class="input-box" style="position: relative;">
+        <input
+          type="password"
+          id="cpf"
+          name="cpf"
+          placeholder="Digite seu CPF"
+          maxlength="14"
+          autocomplete="off"
+          required
+          aria-describedby="cpf-help"
+          aria-label="Campo para digitar CPF"
+          style="padding-right: 30px;"
+        />
+        <!-- Ícone olho preto e branco, só aparece quando digita -->
+        <button
+          type="button"
+          id="toggle-cpf-visibility"
+          aria-label="Mostrar CPF"
+          style="position: absolute; right: 5px; top: 50%; transform: translateY(-50%); background: none; border: none; padding: 0; margin: 0; cursor: pointer; display: none;"
+        >
+          <!-- Ícone SVG olho preto e branco -->
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            fill="none"
+            stroke="black"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            viewBox="0 0 24 24"
+          >
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+            <circle cx="12" cy="12" r="3" />
+          </svg>
+        </button>
+      </div>
+      <button type="submit">Confirmar</button>
+    </form>
+  </div>
+
+  <footer>
+    &copy; 2025 Seu Site. Todos os direitos reservados.
+  </footer>
+
+  <script>
+    // ======= MODO ESCURO COM LOCALSTORAGE =======
+    const toggleButton = document.getElementById("toggle-dark-mode");
+    if(localStorage.getItem("dark-mode") === "true"){
+      document.body.classList.add("dark-mode");
+    }
+    toggleButton.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+      localStorage.setItem("dark-mode", document.body.classList.contains("dark-mode"));
+    });
+
+    // ======= VISIBILIDADE DO CPF =======
+    const cpfInput = document.getElementById("cpf");
+    const toggleCpfVisibility = document.getElementById("toggle-cpf-visibility");
+
+    // Mostra o olho só quando começa a digitar
+    cpfInput.addEventListener("input", () => {
+      // Máscara CPF
+      let v = cpfInput.value.replace(/\D/g, "");
+      if (v.length > 3 && v.length <= 6) {
+        v = v.replace(/(\d{3})(\d+)/, "$1.$2");
+      } else if (v.length > 6 && v.length <= 9) {
+        v = v.replace(/(\d{3})(\d{3})(\d+)/, "$1.$2.$3");
+      } else if (v.length > 9) {
+        v = v.replace(/(\d{3})(\d{3})(\d{3})(\d+)/, "$1.$2.$3-$4");
+      }
+      cpfInput.value = v;
+
+      // Aparece o olho quando tem algo digitado
+      if (cpfInput.value.length > 0) {
+        toggleCpfVisibility.style.display = "block";
+      } else {
+        toggleCpfVisibility.style.display = "none";
+        // Reseta para senha ao apagar tudo
+        cpfInput.type = "password";
+        toggleCpfVisibility.innerHTML = `
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            fill="none"
+            stroke="black"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            viewBox="0 0 24 24"
+          >
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+            <circle cx="12" cy="12" r="3" />
+          </svg>
+        `;
+        toggleCpfVisibility.setAttribute("aria-label", "Mostrar CPF");
+      }
+    });
+
+    // Alterna mostrar/ocultar CPF ao clicar no olho
+    toggleCpfVisibility.addEventListener("click", () => {
+      if (cpfInput.type === "password") {
+        cpfInput.type = "text";
+        // Ícone olho com linha para indicar ocultação (como "olho fechado")
+        toggleCpfVisibility.innerHTML = `
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+            <path d="M17.94 17.94a10.94 10.94 0 0 1-5.94 1.94C6 19.88 1 12 1 12s2.91-4.89 7.04-7.04" />
+            <path d="M1 1l22 22" />
+          </svg>
+        `;
+        toggleCpfVisibility.setAttribute("aria-label", "Ocultar CPF");
+      } else {
+        cpfInput.type = "password";
+        toggleCpfVisibility.innerHTML = `
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            fill="none"
+            stroke="black"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            viewBox="0 0 24 24"
+          >
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+            <circle cx="12" cy="12" r="3" />
+          </svg>
+        `;
+        toggleCpfVisibility.setAttribute("aria-label", "Mostrar CPF");
+      }
+    });
+
+    // ======= VALIDAÇÃO CPF =======
+    function validaCPF(cpf) {
+      cpf = cpf.replace(/[^\d]+/g,'');
+      if(cpf.length !== 11 || /^(\d)\1{10}$/.test(cpf)) return false;
+
+      let soma = 0;
+      for(let i = 0; i < 9; i++) {
+        soma += parseInt(cpf.charAt(i)) * (10 - i);
+      }
+      let resto = soma % 11;
+      let digito1 = (resto < 2) ? 0 : 11 - resto;
+      if (digito1 !== parseInt(cpf.charAt(9))) return false;
+
+      soma = 0;
+      for(let i = 0; i < 10; i++) {
+        soma += parseInt(cpf.charAt(i)) * (11 - i);
+      }
+      resto = soma % 11;
+      let digito2 = (resto < 2) ? 0 : 11 - resto;
+      if (digito2 !== parseInt(cpf.charAt(10))) return false;
+
+      return true;
+    }
+
+    // ======= ENVIO DO FORMULÁRIO =======
+    const form = document.getElementById("cpf-form");
+    const errorMessage = document.getElementById("error-message");
+    const successMessage = document.getElementById("success-message");
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const cpfDigitado = cpfInput.value.replace(/\D/g, "");
+      // Pega o usuário salvo no localStorage da página de cadastro
+      const savedUsuario = localStorage.getItem("usuario");
+      const savedCpfLimpo = savedUsuario ? JSON.parse(savedUsuario).cpf.replace(/\D/g, "") : null;
+
+      errorMessage.style.display = "none";
+      successMessage.style.display = "none";
+
+      if (!savedCpfLimpo) {
+        errorMessage.style.display = "block";
+        errorMessage.textContent = "Nenhum CPF cadastrado encontrado. Por favor, realize o cadastro antes.";
+        return;
+      }
+
+      if (!validaCPF(cpfDigitado)) {
+        errorMessage.style.display = "block";
+        errorMessage.textContent = "CPF digitado é inválido.";
+        return;
+      }
+
+      if (cpfDigitado === savedCpfLimpo) {
+        successMessage.style.display = "block";
+        successMessage.textContent = "CPF confirmado! Redirecionando...";
+        // ----------- REDIRECIONAMENTO PARA PÁGINA PRINCIPAL -----------
+        setTimeout(() => {
+          window.location.replace("../Páginas/Página-príncipal.html");
+        }, 1000);
+      } else {
+        errorMessage.style.display = "block";
+        errorMessage.textContent = "CPF não confere com o cadastro.";
+      }
+    });
+  </script>
+
+</body>
+</html>
+
+

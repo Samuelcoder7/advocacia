@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Monica Valentim - Advogada</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="../css/página-príncipal.css" />
+  <link rel="icon" href="../Fotos/favicon_io (1)/favicon-32x32.png" type="image/x-icon">
+</head>
+
+<body>
+  <button id="toggle-dark-mode" onclick="toggleDarkMode()">Modo Escuro</button>
+
+  <div class="container">
+    <aside class="sidebar" id="sidebar">
+      <img src="../Fotos/PHOTO-2025-04-17-17-55-45.jpg" alt="Logotipo" class="logo" />
+      <img src="../Fotos/WhatsApp Image 2025-04-13 at 17.44.36.jpeg" alt="Monica Valentim" class="foto" />
+      <div class="bibliografia">
+        <p>Monica Valentim é advogada formada em Direito e pós-graduanda em Direito do Trabalho e Previdenciário pela UERJ.</p>
+        <p>Atualmente, cursa Direito Contratual em Harvard.</p>
+        <p>Com dedicação e ética, atua para ajudar pessoas em questões jurídicas complexas.</p>
+        <p>Especialista em causas trabalhistas e previdenciárias.</p>
+        <p>Reconhecida por sua determinação e compromisso com a justiça.</p>
+        <p>Participa de eventos jurídicos no Brasil e no exterior.</p>
+        <p>Autora de artigos em revistas especializadas.</p>
+        <p>Consultora jurídica para empresas de grande porte.</p>
+        <p>Defensora dos direitos humanos e da igualdade de gênero.</p>
+        <p>OAB/RJ nº 261.727</p>
+      </div>
+    </aside>
+
+    <main class="main">
+      <nav>
+        <a href="../Páginas/Página-atuacoes.html" id="atuacoes-link">Atuações</a>
+        <a href="página-de-login.html">Login</a>
+        <a href="quem-somos.html">Quem somos?</a>
+        <a href="Página-de-cadastro.html">Cadastro</a>
+      </nav>
+
+      <div class="title">Monica Valentim</div>
+      <div class="subtitle">ADVOGADA</div>
+      <div class="oab">OAB/RJ 261.727</div>
+
+      <div class="sections-container">
+        <section class="section">
+          <img src="../Fotos/IMG-20241001-WA0138.jpg" alt="Imagem 1" class="section-image" />
+          <p>Especialista em Direito do Trabalho, com foco em soluções jurídicas personalizadas.</p>
+        </section>
+        <section class="section">
+          <img src="../Fotos/Deusa da justiça.jpeg" alt="Imagem 2" class="section-image" />
+          <p>Atuação ética e eficiente em questões jurídicas para empresas e empregados.</p>
+        </section>
+        <section class="section">
+          <img src="../Fotos/20241005_101818.jpg" alt="Imagem 3" class="section-image" />
+          <p>Presença em congressos e defesa ativa dos direitos humanos.</p>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <a id="whatsapp" class="botao-flutuante" href="https://wa.me/5521992490000" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+  </a>
+  <a id="instagram" class="botao-flutuante" href="https://www.instagram.com/monicavalentimrodrigues" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
+  </a>
+
+  <script>
+    // Dark mode ao carregar
+    if (localStorage.getItem('dark-mode') === 'true') {
+      document.documentElement.classList.add('dark-mode');
+      document.body.classList.add('dark-mode');
+    }
+
+    function toggleDarkMode() {
+      document.documentElement.classList.toggle('dark-mode');
+      document.body.classList.toggle('dark-mode');
+      localStorage.setItem('dark-mode', document.body.classList.contains('dark-mode'));
+    }
+
+    // Verifica se o usuário está logado
+    document.addEventListener("DOMContentLoaded", function () {
+      const linkAtuacoes = document.getElementById("atuacoes-link");
+      const usuarioCadastrado = localStorage.getItem("usuarioCadastrado") === "true";
+
+      linkAtuacoes.addEventListener("click", function (e) {
+        if (!usuarioCadastrado) {
+          e.preventDefault();
+          alert("Você precisa estar cadastrado para acessar essa área.");
+        } else {
+          // Acessa diretamente, pois está na mesma pasta
+          window.location.href = "Página-atuacoes.html";
+        }
+      });
+    });
+  </script>
+</body>
+</html>

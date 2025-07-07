@@ -1,0 +1,115 @@
+  
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    /* Estilo geral */
+    body {
+      background-color: #f5f5dc;
+      color: #8b4513;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      line-height: 1.6;
+    }
+
+    /* Botão Dark Mode */
+    #toggle-dark-mode {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      padding: 10px 15px;
+      background-color: #8b4513;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #toggle-dark-mode:hover {
+      background-color: #a0522d;
+    }
+
+    /* Seção Principal */
+    .quem-somos {
+      max-width: 1000px;
+      margin: 100px auto 60px auto;
+      text-align: center;
+    }
+    .quem-somos h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+    .intro {
+      font-size: 18px;
+      margin-bottom: 40px;
+      padding: 0 20px;
+    }
+
+    /* Cards dos Devs */
+    .devs {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      padding: 0 20px;
+    }
+    .dev-card {
+      background-color: #fffaf0;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    .dev-card img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 15px;
+    }
+    .dev-card h2 {
+      font-size: 20px;
+      margin-bottom: 5px;
+    }
+    .dev-card p {
+      font-size: 14px;
+      margin: 5px 0;
+    }
+
+    /* Rodapé */
+    footer {
+      background-color: #8b4513;
+      color: #fff;
+      text-align: center;
+      padding: 15px 0;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      font-size: 14px;
+    }
+
+    /* Dark Mode */
+    body.dark-mode {
+      background-color: #222;
+      color: #fff;
+    }
+    body.dark-mode .dev-card {
+      background-color: #1e1e1e;
+      color: #f1f1f1;
+      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+    }
+    body.dark-mode #toggle-dark-mode {
+      background-color: #444;
+      color: #fff;
+    }
+    body.dark-mode #toggle-dark-mode:hover {
+      background-color: #666;
+    }
+    body.dark-mode footer {
+      background-color: #333;
+      color: #bbb;
+    }
+ 

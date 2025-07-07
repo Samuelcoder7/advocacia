@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Atuações</title>
+
+  <!-- Fonte moderna -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet" />
+
+  <!-- CSS externo com melhorias -->
+  <link rel="stylesheet" href="../css/Página-atuacoes.css" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="../Fotos/favicon_io (1)/favicon-32x32.png" />
+</head>
+
+<body>
+  <!-- Botão de Dark Mode -->
+  <button id="toggle-dark-mode" onclick="toggleDarkMode()">Modo Escuro</button>
+
+  <!-- Botão de voltar -->
+  <div class="main">
+    <a class="botao-voltar" href="../Páginas/Página-príncipal.html">Voltar para página principal</a>
+  </div>
+
+  <h1>ATUAÇÕES</h1>
+
+  <!-- BLOCO: PREVIDENCIARISTA -->
+  <section class="bloco-tema">
+    <h2 class="titulo-bloco">Atuação Previdenciária</h2>
+    <img src="../Fotos/example-601.jpg" alt="Imagem Previdenciária" />
+
+    <div class="texto-bloco">
+      <p><strong>Você sabia?</strong> A Previdência Social no Brasil teve início em <strong>1923</strong> com a criação das primeiras Caixas de Aposentadorias e Pensões.</p>
+      <p>Desde então, nosso sistema previdenciário evoluiu com importantes marcos, como a <strong>Constituição de 1988</strong> e a implementação do <strong>INSS</strong>, garantindo direitos a milhões de trabalhadores.</p>
+      <p>Mas apesar desses avanços, muitos brasileiros ainda enfrentam dificuldades para acessar benefícios como aposentadoria, auxílio-doença ou pensão por morte.</p>
+      <p><strong>Está com algum problema?</strong> Preencha o formulário abaixo para que possamos entender sua situação e orientá-lo com responsabilidade.</p>
+    </div>
+
+    <div class="form-container">
+      <h3>Descreva seu problema</h3>
+      <form action="enviar-formulario.php" method="POST">
+        <label for="descricao">Descrição do problema:</label>
+        <textarea id="descricao" name="descricao" rows="5" placeholder="Descreva seu problema aqui..." required></textarea>
+        <button type="submit">Enviar</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- BLOCO: TRABALHISTA -->
+  <section class="bloco-tema">
+    <h2 class="titulo-bloco">Atuação Trabalhista</h2>
+    <img src="../Fotos/direito-trabalhista-v2.png" alt="Imagem Trabalhista" />
+
+    <div class="texto-bloco">
+      <p>O <strong>Direito do Trabalho</strong> nasceu para proteger quem mais precisa. Desde o século XVIII, os trabalhadores lutam por condições justas — e no Brasil, a <strong>CLT (1943)</strong> foi um marco fundamental nessa jornada.</p>
+      <p>Apesar das conquistas, ainda há <strong>desafios reais</strong> no cotidiano de muitos profissionais: atrasos salariais, assédio moral, acúmulo de funções ou demissões indevidas são mais comuns do que deveriam.</p>
+      <p><strong>Você está passando por isso?</strong> Compartilhe sua experiência para que possamos oferecer ajuda jurídica qualificada.</p>
+    </div>
+
+    <div class="form-container">
+      <h3>Descreva seu problema</h3>
+      <form action="enviar-formulario-trabalhista.php" method="POST">
+        <label for="descricao">Descrição do problema:</label>
+        <textarea id="descricao" name="descricao" rows="5" placeholder="Descreva seu problema aqui..." required></textarea>
+        <button type="submit">Enviar</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Botões de redes sociais -->
+  <a id="whatsapp" class="botao-flutuante" href="https://wa.me/5521992490000" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" />
+  </a>
+
+  <a id="instagram" class="botao-flutuante" href="https://www.instagram.com/monicavalentimrodrigues" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" />
+  </a>
+
+  <!-- Rodapé fixo -->
+  <footer>
+    © 2025 Monica Valentim - Todos os direitos reservados.
+  </footer>
+
+  <!-- Script Dark Mode -->
+  <script>
+    if (localStorage.getItem('dark-mode') === 'true') {
+      document.documentElement.classList.add('dark-mode');
+      document.body.classList.add('dark-mode');
+    }
+
+    function toggleDarkMode() {
+      document.documentElement.classList.toggle('dark-mode');
+      document.body.classList.toggle('dark-mode');
+      localStorage.setItem('dark-mode', document.body.classList.contains('dark-mode'));
+    }
+  </script>
+</body>
+</html>
